@@ -1,57 +1,36 @@
 public class Node {
+    public Baggage baggage;
+    public Node next;
+    public Node prev;
 
-            int item;
-            Node previous;
-            Node next;
+    public Node(Baggage baggage) {
+        this.baggage = baggage;
+        this.next = null;
+        this.prev = null;
+    }
 
-            public Node(int item) {
-                this.item = item;
-            }
+    public Baggage getBaggage() {
+        return baggage;
+    }
 
-        //Initially, head and tail is set to null
-        Node head, tail = null;
+    public Node getNext() {
+        return next;
+    }
 
-        //add a node to the list
-        public void addNode(int item) {
-            //Create a new node
-            Node newNode = new Node(item);
+    public void setNext(Node next) {
+        this.next = next;
+    }
 
-            //if list is empty, head and tail points to newNode
-            if(head == null) {
-                head = tail = newNode;
-                //head's previous will be null
-                head.previous = null;
-                //tail's next will be null
-                tail.next = null;
-            }
-            else {
-                //add newNode to the end of list. tail->next set to newNode
-                tail.next = newNode;
-                //newNode->previous set to tail
-                newNode.previous = tail;
-                //newNode becomes new tail
-                tail = newNode;
-                //tail's next point to null
-                tail.next = null;
-            }
-        }
+    public Node getPrev() {
+        return prev;
+    }
 
-        //print all the nodes of doubly linked list
-        public void printNodes() {
-            //Node current will point to head
-            Node current = head;
-            if(head == null) {
-                System.out.println("Doubly linked list is empty");
-                return;
-            }
-            System.out.println("Nodes of doubly linked list: ");
-            while(current != null) {
-                //Print each node and then go to next.
-                System.out.print(current.item + " ");
-                current = current.next;
-            }
-        }
-
+    public void setPrev(Node prev) {
+        this.prev = prev;
+    }
 
 }
+
+
+
 
