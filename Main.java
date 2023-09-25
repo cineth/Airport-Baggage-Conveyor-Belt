@@ -11,6 +11,21 @@ public class Main {
         Scanner bagscan = new Scanner(System.in);
         Baggage newBag = new Baggage();
 
+        // Prompt for and set Flight number for bag
+        System.out.print("Enter Flight Number: ");
+        int flightNumber = bagscan.nextInt();
+        newBag.setflightNumber(flightNumber);
+
+        Scanner bagscan = new Scanner(System.in);
+        Baggage newBag = new Baggage();
+
+        // Prompt for and set Flight number for bag
+        System.out.print("Enter Flight Number: ");
+        int flightNumber = bagscan.nextInt();
+        newBag.setflightNumber(flightNumber);
+
+
+
 
         //create a DoublyLinkedList object
         Node dl_List = new Node(1);
