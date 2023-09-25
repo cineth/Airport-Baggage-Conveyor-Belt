@@ -24,14 +24,14 @@ public class ConveyorBelt {
         int totalVIPBags = 0;
         float totalWeight = 0.0f;
 
-        Node current = head; //making new node current and then making it the head
-        while (current != null) {
+        Node currentNode = head; //making new node currentNode and then making it the head
+        while (currentNode != null) {
             totalBags++;
-            totalWeight += current.getBaggage().getKg(); // Assuming getKg() returns the bag's weight in kg.
-            if (current.getBaggage().getVIP()) { // Assuming getVIP() returns true for VIP bags.
+            totalWeight += currentNode.getBaggage().getKg(); // Assuming getKg() returns the bag's weight in kg.
+            if (currentNode.getBaggage().getVIP()) { // Assuming getVIP() returns true for VIP bags.
                 totalVIPBags++;
             }
-            current = current.getNext();
+            currentNode = currentNode.getNext();
         }
 
         System.out.println("Total Bags: " + totalBags);
@@ -41,17 +41,17 @@ public class ConveyorBelt {
     }
 
     public void printDetails(){
-        Node current = head;
+        Node currentNode = head;
 
-        while (current != null) {
-            Baggage bag = current.getBaggage();
+        while (currentNode != null) {
+            Baggage bag = currentNode.getBaggage();
             System.out.println("Flight Number: " + bag.getflightNumber());
             System.out.println("Weight: " + bag.getKg() + " kg");
             System.out.println("Size: " + bag.getbagSize() + " cm");
             System.out.println("VIP: " + (bag.getVIP() ? "Yes" : "No"));
             System.out.println(); // Add a line break between bags
 
-            current = current.getNext();
+            currentNode = currentNode.getNext();
         }
     }
     public void loadFlight(){
