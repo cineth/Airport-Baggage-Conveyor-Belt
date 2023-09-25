@@ -1,11 +1,8 @@
 import java.io.PrintStream;
 import java.util.Scanner;
-
 import static java.lang.System.out;
 
 public class Main {
-
-
     public static void main(String[] args) {
 
         Baggage newBag = new Baggage();
@@ -35,12 +32,6 @@ public class Main {
         boolean VIP = vipscan.nextBoolean();
         newBag.setVIP(VIP);
 
-
-
-
-
-
     }
-
 
 }
