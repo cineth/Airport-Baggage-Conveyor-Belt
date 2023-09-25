@@ -6,9 +6,9 @@ public class Main {
 
 
     public static void main(String[] args) {
-    Baggage newBaggage = new Baggage();
-    Node newNode = new Node();
-    ConveyorBelt belt = new ConveyorBelt();
+        Baggage newBaggage = new Baggage();
+        Node newNode = new Node();
+        ConveyorBelt belt = new ConveyorBelt();
 
 
     }
