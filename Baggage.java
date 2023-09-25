@@ -41,24 +41,26 @@ public class Baggage {
     }
 
     // Bag Dimensions Getter
-    public float setbagSize() {
+    public float getbagSize() {
         return bagSize;
     }
 
     // Bag Dimensions Setter
-    public void getbagSize(float newSize) {
+    public void setbagSize(float newSize) {
         this.bagSize = newSize;
     }
 
     // High priority bag Getter
-    public float setVIP() {
-        return bagSize;
+    public boolean getVIP() {
+        return VIP;
     }
 
     //  High priority bag Setter
-    public void getVIP(boolean newVIP) {
+    public void setVIP(boolean newVIP) {
         this.VIP = newVIP;
     }
+
+
 
 
 
