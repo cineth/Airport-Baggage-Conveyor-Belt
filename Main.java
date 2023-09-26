@@ -49,6 +49,8 @@ public class Main {
         conveyorBelt.printSummary();
         conveyorBelt.printDetails(); // calls conveyorBelt.printDetails();
 
+        conveyorBelt.printFlights(); // prints the all flights
+
         inputScanner.close(); // Close the scanner when done.
 
 

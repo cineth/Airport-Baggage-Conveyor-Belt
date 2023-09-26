@@ -133,4 +133,13 @@ public class ConveyorBelt {
         System.out.println("Removed " + bagsRemoved + " bags over size " + maxSize + " cm");
     }
 
+    public void printFlights() {
+        Node currentNode = head;
+        while (currentNode!= null) {
+            System.out.println(currentNode.getBaggage().getflightNumber());
+            currentNode = currentNode.getNext();
+        }
+    }
+
+
 }

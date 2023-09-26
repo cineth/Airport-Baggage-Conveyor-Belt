@@ -4,13 +4,7 @@ public class Baggage {
     private float bagSize; // representing the sum of length+width+height in cm)
     private boolean VIP; // high priority bag
 
-    public Baggage(){
-        // Initialize to default values
-        this.flightNumber = 0;
-        this.bagKg = 0;
-        this.bagSize = 0;
-        this.VIP = false;
-    }
+
 
     // Constructor to initialize Bag
     public Baggage(int fn, float bk, float bs, boolean vp) {
@@ -28,6 +22,7 @@ public class Baggage {
     // Flight Number Setter
     public void setflightNumber(int newFN) {
         this.flightNumber = newFN;
+
     }
 
     // Weight of Bag Getter
