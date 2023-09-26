@@ -60,9 +60,4 @@ public class Baggage {
         this.VIP = newVIP;
     }
 
-
-
-
-
-
 }

@@ -37,7 +37,8 @@ public class Main {
             conveyorBelt.checkBag(newBag);
         }
 
-        // Call the printSummary or printDetails method to display the summary
+        // Call the print
+        // Summary or printDetails method to display the summary
         conveyorBelt.printSummary(); // or conveyorBelt.printDetails();
 
         inputScanner.close(); // Close the scanner when done.
