@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class ConveyorBelt {
     private Node head;
     private Node tail;
@@ -13,16 +14,39 @@ public class ConveyorBelt {
         Node newNode = new Node(baggage);
         if (head == null) {
             head = tail = newNode;
+            //head's previous will be null
+            head.prev = null;
+            //tail's next will be null
+            tail.next = null;
         } else {
-            newNode.setPrev(tail);
-            tail.setNext(newNode);
+            //add newNode to the end of list. tail->next set to newNode
+            tail.next = newNode;
+            //newNode->previous set to tail
+            newNode.prev = tail;
+            //newNode becomes new tail
             tail = newNode;
+            //tail's next point to null
+            tail.next = null;
         }
 
         if (newNode.getBaggage().getVIP()) { // Assuming getVIP() returns true for VIP bags.
             head = newNode;
         }else {     // Assuming getVIP() returns false for non-VIP bags.}
             tail = newNode;
+        }
+    }
+    public void printNodes() {
+        //Node current will point to head
+        Node current = head;
+        if(head == null) {
+            System.out.println("Doubly linked list is empty");
+            return;
+        }
+        System.out.println("Nodes of doubly linked list: ");
+        while(current != null) {
+            //Print each node and then go to next.
+            System.out.print(current.baggage.getflightNumber() + " ");
+            current = current.next;
         }
     }
     public void printSummary(){
@@ -37,7 +61,7 @@ public class ConveyorBelt {
             if (currentNode.getBaggage().getVIP()) { // Assuming getVIP() returns true for VIP bags.
                 totalVIPBags++;
             }
-            currentNode = currentNode.getNext();
+            currentNode = currentNode.next;
         }
 
         System.out.println("Total Bags: " + totalBags);
@@ -57,7 +81,7 @@ public class ConveyorBelt {
             System.out.println("VIP: " + (bag.getVIP() ? "Yes" : "No"));
             System.out.println(); // Add a line break between bags
 
-            currentNode = currentNode.getNext();
+            currentNode = currentNode.next;
         }
 
     }
@@ -74,24 +98,24 @@ public class ConveyorBelt {
                     head = tail = null;
                 } else if (currentNode == head) {
                     // If the bag is at the head
-                    head = currentNode.getNext();
-                    head.setPrev(null);
+                    head = currentNode.next;
+                    head.prev =null;
                 } else if (currentNode == tail) {
                     // If the bag is at the tail
-                    tail = currentNode.getPrev();
-                    tail.setNext(null);
+                    tail = currentNode.prev;
+                    tail.next = null;
                 } else {
                     // If the bag is in the middle
-                    Node prevNode = currentNode.getPrev();
-                    Node nextNode = currentNode.getNext();
-                    prevNode.setNext(nextNode);
-                    nextNode.setPrev(prevNode);
+                    Node prevNode = currentNode.prev;
+                    Node nextNode = currentNode.next;
+                    prevNode.next = nextNode;
+                    nextNode.prev = prevNode;
                 }
 
                 bagsLoaded++;
             }
 
-            currentNode = currentNode.getNext();
+            currentNode = currentNode.next;
         }
 
         System.out.println("Loaded " + bagsLoaded + " bags with flight number " + flightNumber);
@@ -110,36 +134,30 @@ public class ConveyorBelt {
                     head = tail = null;
                 } else if (currentNode == head) {
                     // If the bag is at the head
-                    head = currentNode.getNext();
-                    head.setPrev(null);
+                    head = currentNode.next;
+                    head.prev = null;
                 } else if (currentNode == tail) {
                     // If the bag is at the tail
-                    tail = currentNode.getPrev();
-                    tail.setNext(null);
+                    tail = currentNode.prev;
+                    tail.next = null;
                 } else {
                     // If the bag is in the middle
-                    Node prevNode = currentNode.getPrev();
-                    Node nextNode = currentNode.getNext();
-                    prevNode.setNext(nextNode);
-                    nextNode.setPrev(prevNode);
+                    Node prevNode = currentNode.prev;
+                    Node nextNode = currentNode.next;
+                    prevNode.next = nextNode;
+                    nextNode.prev = prevNode;
                 }
 
                 bagsRemoved++;
             }
 
-            currentNode = currentNode.getNext();
+            currentNode = currentNode.next;
         }
 
         System.out.println("Removed " + bagsRemoved + " bags over size " + maxSize + " cm");
     }
 
-    public void printFlights() {
-        Node currentNode = head;
-        while (currentNode!= null) {
-            System.out.println(currentNode.getBaggage().getflightNumber());
-            currentNode = currentNode.getNext();
-        }
-    }
+
 
 
 }
