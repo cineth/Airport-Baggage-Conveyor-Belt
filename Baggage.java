@@ -1,8 +1,8 @@
 public class Baggage {
-    public int flightNumber; //store the flight number
-    public float bagKg; //  representing weight in kg
-    public float bagSize; // representing the sum of length+width+height in cm)
-    public boolean VIP; // high priority bag
+    private int flightNumber; //store the flight number
+    private float bagKg; //  representing weight in kg
+    private float bagSize; // representing the sum of length+width+height in cm)
+    private boolean VIP; // high priority bag
 
     public Baggage(){
         // Initialize to default values
