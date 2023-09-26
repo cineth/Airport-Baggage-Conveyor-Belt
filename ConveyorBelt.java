@@ -18,6 +18,12 @@ public class ConveyorBelt {
             tail.setNext(newNode);
             tail = newNode;
         }
+
+        if (newNode.getBaggage().getVIP()) { // Assuming getVIP() returns true for VIP bags.
+            head = newNode;
+        }else {     // Assuming getVIP() returns false for non-VIP bags.}
+            tail = newNode;
+        }
     }
     public void printSummary(){
         int totalBags = 0;
@@ -42,7 +48,7 @@ public class ConveyorBelt {
 
     public void printDetails(){
         Node currentNode = head;
-
+        System.out.println();
         while (currentNode != null) {
             Baggage bag = currentNode.getBaggage();
             System.out.println("Flight Number: " + bag.getflightNumber());
@@ -53,6 +59,7 @@ public class ConveyorBelt {
 
             currentNode = currentNode.getNext();
         }
+
     }
     public void loadFlight(int flightNumber){
 
@@ -90,9 +97,10 @@ public class ConveyorBelt {
         System.out.println("Loaded " + bagsLoaded + " bags with flight number " + flightNumber);
 
     }
-    public void removeOverSize(float maxSize) {
+    public void removeOverSize() {
         Node currentNode = head;
         int bagsRemoved = 0;
+        float maxSize = 50;
 
         while (currentNode != null) {
             if (currentNode.getBaggage().getbagSize() > maxSize) {

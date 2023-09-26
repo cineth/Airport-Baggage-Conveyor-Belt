@@ -41,11 +41,13 @@ public class Main {
 
             // Add the bag to the conveyor belt
             conveyorBelt.checkBag(newBag);
+            conveyorBelt.removeOverSize(); // calls conveyorBelt.removeOverSize(bagSize)
         }
 
         // Call the print
         // Summary or printDetails method to display the summary
-        conveyorBelt.printSummary(); // or conveyorBelt.printDetails();
+        conveyorBelt.printSummary();
+        conveyorBelt.printDetails(); // calls conveyorBelt.printDetails();
 
         inputScanner.close(); // Close the scanner when done.
 
