@@ -48,7 +48,10 @@ public class Main {
         // Summary or printDetails method to display the summary
         conveyorBelt.printSummary();
         conveyorBelt.printDetails(); // calls conveyorBelt.printDetails();
-        conveyorBelt.printNodes(); // calls conveyorBelt.printFlights();
+
+        for (int i = 1; i <= 3; i++) {
+            conveyorBelt.printNodeAtIndex(i);
+        }
 
         inputScanner.close(); // Close the scanner when done.
 

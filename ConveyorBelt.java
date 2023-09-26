@@ -3,6 +3,8 @@ public class ConveyorBelt {
     private Node head;
     private Node tail;
 
+    private int length;
+
     public ConveyorBelt() {
         this.head = null;
         this.tail = null;
@@ -10,45 +12,28 @@ public class ConveyorBelt {
 
     // Add a bag to the conveyor belt
     public void checkBag(Baggage baggage) {
-
         Node newNode = new Node(baggage);
-        if (head == null) {
-            head = tail = newNode;
-            //head's previous will be null
-            head.prev = null;
-            //tail's next will be null
-            tail.next = null;
-        } else {
-            //add newNode to the end of list. tail->next set to newNode
-            tail.next = newNode;
-            //newNode->previous set to tail
-            newNode.prev = tail;
-            //newNode becomes new tail
-            tail = newNode;
-            //tail's next point to null
-            tail.next = null;
-        }
 
-        if (newNode.getBaggage().getVIP()) { // Assuming getVIP() returns true for VIP bags.
-            head = newNode;
-        }else {     // Assuming getVIP() returns false for non-VIP bags.}
-            tail = newNode;
+        if (head == null) {
+            // If the conveyor belt is empty, add the bag as the first item
+            head = tail = newNode;
+        } else {
+            // If the conveyor belt is not empty
+            if (baggage.getVIP()) {
+                // If it's a VIP bag, place it at the head (beginning)
+                newNode.next = head;
+                head.prev = newNode;
+                head = newNode;
+            } else {
+                // If it's a regular bag, place it at the end
+                newNode.prev = tail;
+                tail.prev = newNode;
+                tail = newNode;
+            }
         }
     }
-    public void printNodes() {
-        //Node current will point to head
-        Node current = head;
-        if(head == null) {
-            System.out.println("Doubly linked list is empty");
-            return;
-        }
-        System.out.println("Nodes of doubly linked list: ");
-        while(current != null) {
-            //Print each node and then go to next.
-            System.out.print(current.baggage.getflightNumber() + " ");
-            current = current.next;
-        }
-    }
+
+
     public void printSummary(){
         int totalBags = 0;
         int totalVIPBags = 0;

@@ -1,7 +1,7 @@
 public class Node {
-    public Baggage baggage;
-    public Node next;
-    public Node prev;
+    public Baggage baggage; //here is the data component
+    public Node next; //here is the link component
+    public Node prev; //here is the link component
 
     public Node(Baggage baggage) {
         this.baggage = baggage;
