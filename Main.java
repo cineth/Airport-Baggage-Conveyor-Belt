@@ -10,14 +10,20 @@ public class Main {
 
         while (true) {
             // Prompt for and set Flight number for bag
-            System.out.print("Enter Flight Number (or -1 to exit): ");
+            System.out.print("Enter Flight Number (or -1 to exit or -2 to search flight): ");
             int flightNumber = inputScanner.nextInt();
 
             // Check if the user wants to exit
             if (flightNumber == -1) {
                 break; // Exit the loop
             }
+            if (flightNumber == -2) {
+                System.out.print("Enter Flight Number you are looking for: ");
+                int search = inputScanner.nextInt();
+                conveyorBelt.loadFlight(search); // Exit the loop
+                break;
 
+            }
             // Prompt for and set Bag Weight
             System.out.print("Enter Bag Weight : ");
             float bagWeight = inputScanner.nextFloat();

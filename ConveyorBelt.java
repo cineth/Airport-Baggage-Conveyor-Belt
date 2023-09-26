@@ -54,10 +54,75 @@ public class ConveyorBelt {
             currentNode = currentNode.getNext();
         }
     }
-    public void loadFlight(){
+    public void loadFlight(int flightNumber){
+
+        Node currentNode = head;
+        int bagsLoaded = 0;
+
+        while (currentNode != null) {
+            if (currentNode.getBaggage().getflightNumber() == flightNumber) {
+                // Found a bag with the specified flight number, remove it from the list
+                if (currentNode == head && currentNode == tail) {
+                    // If there's only one bag in the list
+                    head = tail = null;
+                } else if (currentNode == head) {
+                    // If the bag is at the head
+                    head = currentNode.getNext();
+                    head.setPrev(null);
+                } else if (currentNode == tail) {
+                    // If the bag is at the tail
+                    tail = currentNode.getPrev();
+                    tail.setNext(null);
+                } else {
+                    // If the bag is in the middle
+                    Node prevNode = currentNode.getPrev();
+                    Node nextNode = currentNode.getNext();
+                    prevNode.setNext(nextNode);
+                    nextNode.setPrev(prevNode);
+                }
+
+                bagsLoaded++;
+            }
+
+            currentNode = currentNode.getNext();
+        }
+
+        System.out.println("Loaded " + bagsLoaded + " bags with flight number " + flightNumber);
 
     }
-    public void removeOverSize(){
+    public void removeOverSize(float maxSize) {
+        Node currentNode = head;
+        int bagsRemoved = 0;
 
+        while (currentNode != null) {
+            if (currentNode.getBaggage().getbagSize() > maxSize) {
+                // Found a bag that exceeds the maximum size, remove it from the list
+                if (currentNode == head && currentNode == tail) {
+                    // If there's only one bag in the list
+                    head = tail = null;
+                } else if (currentNode == head) {
+                    // If the bag is at the head
+                    head = currentNode.getNext();
+                    head.setPrev(null);
+                } else if (currentNode == tail) {
+                    // If the bag is at the tail
+                    tail = currentNode.getPrev();
+                    tail.setNext(null);
+                } else {
+                    // If the bag is in the middle
+                    Node prevNode = currentNode.getPrev();
+                    Node nextNode = currentNode.getNext();
+                    prevNode.setNext(nextNode);
+                    nextNode.setPrev(prevNode);
+                }
+
+                bagsRemoved++;
+            }
+
+            currentNode = currentNode.getNext();
+        }
+
+        System.out.println("Removed " + bagsRemoved + " bags over size " + maxSize + " cm");
     }
+
 }
