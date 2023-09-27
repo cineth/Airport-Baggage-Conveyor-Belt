@@ -4,13 +4,14 @@ import static java.lang.System.out;
 
 public class Main {
     public static void main(String[] args) {
+
         ConveyorBelt conveyorBelt = new ConveyorBelt(); // Create an instance of ConveyorBelt
 
         Scanner inputScanner = new Scanner(System.in);
 
         while (true) {
             // Prompt for and set Flight number for bag
-            System.out.print("Enter Flight Number (or -1 to exit or -2 to search flight): ");
+            System.out.print("Enter Flight Number (or -1 to exit or -2 to remove bag from flight): ");
             int flightNumber = inputScanner.nextInt();
 
             // Check if the user wants to exit
@@ -39,19 +40,16 @@ public class Main {
             // Create a Baggage object with the user-provided information
             Baggage newBag = new Baggage(flightNumber, bagWeight, bagSize, VIP);
 
-            // Add the bag to the conveyor belt
-            conveyorBelt.checkBag(newBag);
+
+            conveyorBelt.checkBag(newBag);  // Add the bag to the conveyor belt
             conveyorBelt.removeOverSize(); // calls conveyorBelt.removeOverSize(bagSize)
+
         }
 
-        // Call the print
-        // Summary or printDetails method to display the summary
-        conveyorBelt.printSummary();
+
+        conveyorBelt.printSummary(); //  printDetails method to display the summary
         conveyorBelt.printDetails(); // calls conveyorBelt.printDetails();
-
-        for (int i = 1; i <= 3; i++) {
-            conveyorBelt.printNodeAtIndex(i);
-        }
+        conveyorBelt.displayFlightNumbers(); // calls conveyorBelt.displayFlightNumbers();
 
         inputScanner.close(); // Close the scanner when done.
 
