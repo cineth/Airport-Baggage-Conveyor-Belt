@@ -43,7 +43,7 @@ public class ConveyorBelt {
                     current.prev = newNode;
 
                     if (newNode.prev == null) {
-                        // If the new bag is inserted at the head
+                        //  Inserted at the head of the list because there are no regular bags before it
                         head = newNode;
                     } else {
                         newNode.prev.next = newNode;
