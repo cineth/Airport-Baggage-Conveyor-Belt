@@ -11,7 +11,7 @@ public class ConveyorBelt {
     }
 
     public void checkBag(Baggage baggage) { // Add a bag to the conveyor belt
-        // Create a new node with the provided baggage information
+        // Create a new node with the provided baggage
         Node newNode = new Node(baggage);
 
         if (head == null) { // If the conveyor belt is empty, add the bag as the first item
