@@ -10,29 +10,55 @@ public class ConveyorBelt {
         this.tail = null;
     }
 
-    // Add a bag to the conveyor belt
-    public void checkBag(Baggage baggage) {
+    public void checkBag(Baggage baggage) { // Add a bag to the conveyor belt
+        // Create a new node with the provided baggage information
         Node newNode = new Node(baggage);
 
-        if (head == null) {  // If the conveyor belt is empty, add the bag as the first item
+        if (head == null) { // If the conveyor belt is empty, add the bag as the first item
 
             head = tail = newNode;
-        } else {// If the conveyor belt is not empty
 
-            if (baggage.getVIP()) { // If it's a VIP bag, place it at the head (beginning)
+        } else if (baggage.getVIP()) { // If it's a VIP bag, place it before the first regular bag (if any)
 
-                newNode.next = head;
-                head.prev = newNode;
-                head = newNode;
-            } else { // If it's a regular bag, place it at the end
 
-                newNode.prev = tail; // update the previous node reference of newNode to the current tail
-                tail.prev = newNode; // updates previous reference of current tail to point to the new node
-                tail = newNode; // updates tail reference to point to the new node
-            }
+                // Initialize a reference to traverse the conveyor belt
+                Node current = head;
+
+                // Traverse the conveyor belt to find the first regular bag
+                while (current != null && current.getBaggage().getVIP()) {
+                    current = current.next;
+                }
+
+                if (current == null) {
+                    // No regular bags found, add VIP bag at the end
+                    tail.next = newNode;
+                    newNode.prev = tail;
+                    tail = newNode;
+                } else {
+                    // Insert VIP bag before the first regular bag
+
+                    // Update references to connect the new node in the list
+                    newNode.prev = current.prev;
+                    newNode.next = current;
+                    current.prev = newNode;
+
+                    if (newNode.prev == null) {
+                        // If the new bag is inserted at the head
+                        head = newNode;
+                    } else {
+                        newNode.prev.next = newNode;
+                    }
+                }
+        } else {
+                // If it's a regular bag, place it at the end
+
+                // Update references to connect the new node at the end
+                newNode.prev = tail;
+                tail.next = newNode;
+                tail = newNode;
+
         }
     }
-
 
     public void printSummary(){
 
