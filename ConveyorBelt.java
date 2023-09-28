@@ -172,7 +172,7 @@ public class ConveyorBelt {
         // test method to display the flight numbers on the conveyor belt in order
         Node currentNode = head; // Start at the head of the list
 
-        System.out.println("Flight Numbers on the Conveyor Belt:");
+        System.out.println("Flight Numbers on the Conveyor Belt in printed order:");
 
         while (currentNode != null) {
             int flightNumber = currentNode.getBaggage().getflightNumber();
