@@ -46,14 +46,10 @@ public class Main {
 
         }
 
-
         conveyorBelt.printSummary(); //  printDetails method to display the summary
         conveyorBelt.printDetails(); // calls conveyorBelt.printDetails();
         conveyorBelt.displayFlightNumbers(); // calls conveyorBelt.displayFlightNumbers();
 
         inputScanner.close(); // Close the scanner when done.
-
-
     }
-
 }

@@ -2,7 +2,6 @@ import java.util.Scanner;
 public class ConveyorBelt {
     private Node head;
     private Node tail;
-
     private int length;
 
     public ConveyorBelt() {
@@ -169,7 +168,6 @@ public class ConveyorBelt {
 
         System.out.println("Removed " + bagsRemoved + " bags over size " + maxSize + " cm");
     }
-
     public void displayFlightNumbers() {
         Node currentNode = head; // Start at the head of the list
 
