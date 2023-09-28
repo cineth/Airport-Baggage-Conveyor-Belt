@@ -97,8 +97,8 @@ public class ConveyorBelt {
         }
 
     }
-    public void loadFlight(int flightNumber){
-
+    public void loadFlight(){
+        int flightNumber = 5;
         Node currentNode = head; //making new node currentNode and then making it the head(first node in linked list)
         int bagsLoaded = 0; // initialize a variable bagsLoaded to keep track of the number of bags
 
@@ -169,6 +169,7 @@ public class ConveyorBelt {
         System.out.println("Removed " + bagsRemoved + " bags over size " + maxSize + " cm");
     }
     public void displayFlightNumbers() {
+        // test method to display the flight numbers on the conveyor belt in order
         Node currentNode = head; // Start at the head of the list
 
         System.out.println("Flight Numbers on the Conveyor Belt:");

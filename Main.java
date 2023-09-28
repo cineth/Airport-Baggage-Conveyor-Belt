@@ -7,49 +7,31 @@ public class Main {
 
         ConveyorBelt conveyorBelt = new ConveyorBelt(); // Create an instance of ConveyorBelt
 
-        Scanner inputScanner = new Scanner(System.in);
+            //the bag size limit is 50 for testing the removeOverSize
+            //Remove all of the bags with the given flight number(5) to test loadFlight method
 
-        while (true) {
-            // Prompt for and set Flight number for bag
-            System.out.print("Enter Flight Number (or -1 to exit or -2 to remove bag from flight): ");
-            int flightNumber = inputScanner.nextInt();
-
-            // Check if the user wants to exit
-            if (flightNumber == -1) {
-                break; // Exit the loop
-            }
-            if (flightNumber == -2) {
-                System.out.print("Enter Flight Number you are looking for: ");
-                int search = inputScanner.nextInt();
-                conveyorBelt.loadFlight(search); // Exit the loop
-                break;
-
-            }
-            // Prompt for and set Bag Weight
-            System.out.print("Enter Bag Weight : ");
-            float bagWeight = inputScanner.nextFloat();
-
-            // Prompt for and set Bag Dimensions
-            System.out.print("Enter Bag Dimensions : ");
-            float bagSize = inputScanner.nextFloat();
-
-            // Prompt for and set Bag Dimensions
-            System.out.print("Enter Vip Details : ");
-            boolean VIP = inputScanner.nextBoolean();
 
             // Create a Baggage object with the user-provided information
-            Baggage newBag = new Baggage(flightNumber, bagWeight, bagSize, VIP);
+            Baggage newBag0 = new Baggage(0, 10, 10, false); // this bag fits within bag limit and is not flight 5, but is NOT VIP
+            Baggage newBag1 = new Baggage(1, 10, 10, true); // this bag fits within bag limit and is not flight 5, but IS VIP
+            Baggage newBag2 = new Baggage(2, 10, 10, false); // this bag fits within bag limit and is not flight 5, but is NOT VIP
+            Baggage newBag3 = new Baggage(3, 10, 10, true); // this bag fits within bag limit and is not flight 5, but IS VIP
+            Baggage newBag4 = new Baggage(4, 10, 100, true); // this bag DOES NOT fit within bag limit so get removed from belt
+            Baggage newBag5 = new Baggage(5, 10, 10, true); // this flight number is 5 which all the bags with the given flight number(5) gets removed from belt
 
 
-            conveyorBelt.checkBag(newBag);  // Add the bag to the conveyor belt
-            conveyorBelt.removeOverSize(); // calls conveyorBelt.removeOverSize(bagSize)
+            // Add the bag to the conveyor belt
+            conveyorBelt.checkBag(newBag0);  // Add the bag to the conveyor belt
+            conveyorBelt.checkBag(newBag1);  // Add the bag to the conveyor belt
+            conveyorBelt.checkBag(newBag2);  // Add the bag to the conveyor belt
+            conveyorBelt.checkBag(newBag3);  // Add the bag to the conveyor belt
+            conveyorBelt.checkBag(newBag4);  // Add the bag to the conveyor belt
+            conveyorBelt.checkBag(newBag5);  // Add the bag to the conveyor belt
 
-        }
-
-        conveyorBelt.printSummary(); //  printDetails method to display the summary
-        conveyorBelt.printDetails(); // calls conveyorBelt.printDetails();
-        conveyorBelt.displayFlightNumbers(); // calls conveyorBelt.displayFlightNumbers();
-
-        inputScanner.close(); // Close the scanner when done.
+            conveyorBelt.removeOverSize(); // calls conveyorBelt.removeOverSize()
+            conveyorBelt.loadFlight();      // calls conveyorBelt.loadFlight();
+            conveyorBelt.printSummary(); // printDetails method to display the summary
+            conveyorBelt.printDetails(); // calls conveyorBelt.printDetails();
+            conveyorBelt.displayFlightNumbers(); // calls conveyorBelt.displayFlightNumbers();
     }
 }
