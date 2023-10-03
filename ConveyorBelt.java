@@ -1,8 +1,7 @@
-import java.util.Scanner;
 public class ConveyorBelt {
     private Node head;
     private Node tail;
-    private int length;
+
 
     public ConveyorBelt() {
         this.head = null;
